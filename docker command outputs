@@ -1,0 +1,527 @@
+$ docker version
+Client: Docker Engine - Community
+ Version:           26.1.0
+ API version:       1.45
+ Go version:        go1.22.2
+ Git commit:        9714adc6c7
+ Built:             Mon Apr 22 17:00:04 2024
+ OS/Arch:           darwin/arm64
+ Context:           desktop-linux
+
+Server: Docker Desktop 4.29.0 (145265)
+ Engine:
+  Version:          26.0.0
+  API version:      1.45 (minimum version 1.24)
+  Go version:       go1.21.8
+  Git commit:       8b79278
+  Built:            Wed Mar 20 15:18:02 2024
+  OS/Arch:          linux/arm64
+  Experimental:     false
+ containerd:
+  Version:          1.6.28
+  GitCommit:        ae07eda36dd25f8a1b98dfbf587313b99c0190bb
+ runc:
+  Version:          1.1.12
+  GitCommit:        v1.1.12-0-g51d5e94
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+
+==========================================================================
+
+$ docker info
+Client: Docker Engine - Community
+ Version:    26.1.0
+ Context:    desktop-linux
+ Debug Mode: false
+ Plugins:
+  buildx: Docker Buildx (Docker Inc.)
+    Version:  v0.13.1-desktop.1
+    Path:     /Users/azharshaikh/.docker/cli-plugins/docker-buildx
+  debug: Get a shell into any image or container. (Docker Inc.)
+    Version:  0.0.27
+    Path:     /Users/azharshaikh/.docker/cli-plugins/docker-debug
+  dev: Docker Dev Environments (Docker Inc.)
+    Version:  v0.1.2
+    Path:     /Users/azharshaikh/.docker/cli-plugins/docker-dev
+  extension: Manages Docker extensions (Docker Inc.)
+    Version:  v0.2.23
+    Path:     /Users/azharshaikh/.docker/cli-plugins/docker-extension
+  feedback: Provide feedback, right in your terminal! (Docker Inc.)
+    Version:  v1.0.4
+    Path:     /Users/azharshaikh/.docker/cli-plugins/docker-feedback
+  init: Creates Docker-related starter files for your project (Docker Inc.)
+    Version:  v1.1.0
+    Path:     /Users/azharshaikh/.docker/cli-plugins/docker-init
+  sbom: View the packaged-based Software Bill Of Materials (SBOM) for an image (Anchore Inc.)
+    Version:  0.6.0
+    Path:     /Users/azharshaikh/.docker/cli-plugins/docker-sbom
+  scout: Docker Scout (Docker Inc.)
+    Version:  v1.6.3
+    Path:     /Users/azharshaikh/.docker/cli-plugins/docker-scout
+WARNING: Plugin "/Users/azharshaikh/.docker/cli-plugins/docker-compose" is not valid: failed to fetch metadata: fork/exec /Users/azharshaikh/.docker/cli-plugins/docker-compose: exec format error
+
+Server:
+ Containers: 21
+  Running: 20
+  Paused: 0
+  Stopped: 1
+ Images: 13
+ Server Version: 26.0.0
+ Storage Driver: overlayfs
+  driver-type: io.containerd.snapshotter.v1
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 2
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: ae07eda36dd25f8a1b98dfbf587313b99c0190bb
+ runc version: v1.1.12-0-g51d5e94
+ init version: de40ad0
+ Security Options:
+  seccomp
+   Profile: unconfined
+  cgroupns
+ Kernel Version: 6.6.22-linuxkit
+ Operating System: Docker Desktop
+ OSType: linux
+ Architecture: aarch64
+ CPUs: 10
+ Total Memory: 7.657GiB
+ Name: docker-desktop
+ ID: 77add664-b23d-44cb-ba72-5584f092728f
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ HTTP Proxy: http.docker.internal:3128
+ HTTPS Proxy: http.docker.internal:3128
+ No Proxy: hubproxy.docker.internal
+ Username: azharali20
+ Labels:
+  com.docker.desktop.address=unix:///Users/azharshaikh/Library/Containers/com.docker.docker/Data/docker-cli.sock
+ Experimental: false
+ Insecure Registries:
+  hubproxy.docker.internal:5555
+  127.0.0.0/8
+ Live Restore Enabled: false
+
+ ==========================================================================
+
+$ docker images 
+REPOSITORY                                TAG                                                                           IMAGE ID       CREATED         SIZE
+redis                                     latest                                                                        8a4aaf84f31a   2 weeks ago     195MB
+hasura/graphql-engine                     latest                                                                        ac23694ba22f   3 weeks ago     694MB
+docker/desktop-kubernetes                 kubernetes-v1.29.2-cni-v1.4.0-critools-v1.29.0-cri-dockerd-v0.3.11-1-debian   ee4d0cb41223   6 weeks ago     599MB
+postgres                                  15                                                                            a72bcd42bfd4   2 months ago    622MB
+registry.k8s.io/kube-apiserver            v1.29.2                                                                       fe4196cd9fa0   2 months ago    158MB
+registry.k8s.io/kube-proxy                v1.29.2                                                                       4a993783f8b8   2 months ago    114MB
+registry.k8s.io/kube-controller-manager   v1.29.2                                                                       4ac9c5b9e65b   2 months ago    151MB
+registry.k8s.io/kube-scheduler            v1.29.2                                                                       108e51c8bcd2   2 months ago    78.2MB
+registry.k8s.io/etcd                      3.5.10-0                                                                      22f892d7672a   5 months ago    206MB
+registry.k8s.io/coredns/coredns           v1.11.1                                                                       1eeb4c7316ba   8 months ago    77.9MB
+docker/desktop-vpnkit-controller          dc331cb22850be0cdd97c84a9cfecaf44a1afb6e                                      7ecf567ea070   11 months ago   44.7MB
+registry.k8s.io/pause                     3.9                                                                           7031c1b28338   18 months ago   786kB
+docker/desktop-storage-provisioner        v2.0                                                                          115d77efe6e2   2 years ago     56MB
+
+ ==========================================================================
+
+
+$ docker ps
+CONTAINER ID   IMAGE                          COMMAND                   CREATED          STATUS                             PORTS                    NAMES
+2dc73bb8a7d5   postgres:15                    "docker-entrypoint.s…"    30 seconds ago   Up 29 seconds                      0.0.0.0:5432->5432/tcp   task-two-artifacts-postgres-1
+283584e5e2ea   redis:latest                   "docker-entrypoint.s…"    30 seconds ago   Up 29 seconds                      0.0.0.0:6379->6379/tcp   task-two-artifacts-redis-1
+75c5b2266789   hasura/graphql-engine:latest   "/bin/sh -c '\"${HGE_…"   30 seconds ago   Up 29 seconds (health: starting)   0.0.0.0:8111->80/tcp     task-two-artifacts-graphql-engine-1
+8d69359a9e01   4ac9c5b9e65b                   "kube-controller-man…"    4 minutes ago    Up 4 minutes                                                k8s_kube-controller-manager_kube-controller-manager-docker-desktop_kube-system_815abf9efdec70808b2f2e38e47476ca_5
+90e3569ac698   1eeb4c7316ba                   "/coredns -conf /etc…"    4 minutes ago    Up 4 minutes                                                k8s_coredns_coredns-76f75df574-sz96w_kube-system_7b25bdad-1f87-417f-8f3d-cc4a912782e7_4
+0305bca5bf8d   1eeb4c7316ba                   "/coredns -conf /etc…"    4 minutes ago    Up 4 minutes                                                k8s_coredns_coredns-76f75df574-4zwkt_kube-system_548ff36b-a553-4bbc-ad15-785077642137_4
+f8095b33135d   registry.k8s.io/pause:3.9      "/pause"                  4 minutes ago    Up 4 minutes                                                k8s_POD_coredns-76f75df574-sz96w_kube-system_7b25bdad-1f87-417f-8f3d-cc4a912782e7_2
+e47e267a18e3   registry.k8s.io/pause:3.9      "/pause"                  4 minutes ago    Up 4 minutes                                                k8s_POD_coredns-76f75df574-4zwkt_kube-system_548ff36b-a553-4bbc-ad15-785077642137_2
+f7e700ece311   fe4196cd9fa0                   "kube-apiserver --ad…"    4 minutes ago    Up 4 minutes                                                k8s_kube-apiserver_kube-apiserver-docker-desktop_kube-system_91838c84176e55a239acd0e97bb0c8cf_4
+6cd15f272e77   registry.k8s.io/pause:3.9      "/pause"                  4 minutes ago    Up 4 minutes                                                k8s_POD_kube-apiserver-docker-desktop_kube-system_91838c84176e55a239acd0e97bb0c8cf_2
+52f9c3dff52d   115d77efe6e2                   "/storage-provisione…"    4 minutes ago    Up 4 minutes                                                k8s_storage-provisioner_storage-provisioner_kube-system_13d2667b-50b4-4875-9b57-29b7fcb87bf5_5
+6ea78c875cdd   4a993783f8b8                   "/usr/local/bin/kube…"    4 minutes ago    Up 4 minutes                                                k8s_kube-proxy_kube-proxy-zd4q8_kube-system_b3dd1c57-1e02-453e-b0f3-0634add2a607_4
+ffa8c4c9d2fd   108e51c8bcd2                   "kube-scheduler --au…"    4 minutes ago    Up 4 minutes                                                k8s_kube-scheduler_kube-scheduler-docker-desktop_kube-system_a2aef464e32c9d92c9c87ecd4c049741_4
+897478359f0d   22f892d7672a                   "etcd --advertise-cl…"    4 minutes ago    Up 4 minutes                                                k8s_etcd_etcd-docker-desktop_kube-system_a7259c8a6f480a66649ce97631b20e6f_4
+1ed19dea9df1   7ecf567ea070                   "/kube-vpnkit-forwar…"    4 minutes ago    Up 4 minutes                                                k8s_vpnkit-controller_vpnkit-controller_kube-system_f98e80e6-1d8c-4711-bed7-43701980cfd0_4
+3e0c3b75f335   registry.k8s.io/pause:3.9      "/pause"                  4 minutes ago    Up 4 minutes                                                k8s_POD_storage-provisioner_kube-system_13d2667b-50b4-4875-9b57-29b7fcb87bf5_2
+39f07f5b661a   registry.k8s.io/pause:3.9      "/pause"                  4 minutes ago    Up 4 minutes                                                k8s_POD_kube-controller-manager-docker-desktop_kube-system_815abf9efdec70808b2f2e38e47476ca_2
+b5ced272637d   registry.k8s.io/pause:3.9      "/pause"                  4 minutes ago    Up 4 minutes                                                k8s_POD_kube-proxy-zd4q8_kube-system_b3dd1c57-1e02-453e-b0f3-0634add2a607_2
+8a935fea431f   registry.k8s.io/pause:3.9      "/pause"                  4 minutes ago    Up 4 minutes                                                k8s_POD_kube-scheduler-docker-desktop_kube-system_a2aef464e32c9d92c9c87ecd4c049741_2
+28c77677bfbc   registry.k8s.io/pause:3.9      "/pause"                  4 minutes ago    Up 4 minutes                                                k8s_POD_etcd-docker-desktop_kube-system_a7259c8a6f480a66649ce97631b20e6f_2
+04492e674720   registry.k8s.io/pause:3.9      "/pause"                  4 minutes ago    Up 4 minutes                                                k8s_POD_vpnkit-controller_kube-system_f98e80e6-1d8c-4711-bed7-43701980cfd0_2
+==========================================================================
+
+$ docker volume ls
+DRIVER    VOLUME NAME
+local     0b8876f717f61808754a6d2bfbfb4331353e669fd8ac3ac9a474104e74068919
+local     5fa4a5cfb4b44ce87ab6fe678eb2b52450d21986c73e36e9ee3fb11061642374
+local     task-two-artifacts_db_data
+
+==========================================================================
+
+
+$ docker system df
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          13        12        2.14GB    -2.341e+07B (-1%)
+Containers      22        21        524.3kB   77.82kB (14%)
+Local Volumes   3         2         40.43MB   88B (0%)
+Build Cache     0         0         0B        0B
+
+
+==========================================================================
+
+$ docker network ls
+NETWORK ID     NAME                         DRIVER    SCOPE
+f67fe4ce7f68   bridge                       bridge    local
+1f2f9224a4c0   host                         host      local
+90567a9815f1   none                         null      local
+e4e3bb0deedf   task-two-artifacts_default   bridge    local
+
+==========================================================================
+
+$ docker network inspect task-two-artifacts_default
+[
+    {
+        "Name": "task-two-artifacts_default",
+        "Id": "e4e3bb0deedfbbdbffe593efc3c88e27be956eecef5cb9fd2b99a4988aa21e2e",
+        "Created": "2024-04-24T15:47:05.902972041Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "x.x.x.0/16",
+                    "Gateway": "x.x.x.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "27a450555b74ad63d5d0609e9ef10cac275fcc5e9fa6d435e2868905043eb843": {
+                "Name": "task-two-artifacts-postgres-1",
+                "EndpointID": "32650e433c80cf917e1e058cea3d94f6dcea64f3dd5df18309b607e5180fbd05",
+                "MacAddress": "xy:xy:xy:xy:00:04",
+                "IPv4Address": "x.x.x.4/16",
+                "IPv6Address": ""
+            },
+            "dba44c2a64f761c2589176203e822b04c84fa57f9bfbed1b61ab29a8e4f8cbc1": {
+                "Name": "task-two-artifacts-redis-1",
+                "EndpointID": "29250e9299cd5cdcb7cad57e96a53b0f2f8cfa8ec41ce21bfb0fd63370c90bc0",
+                "MacAddress": "xy:xy:xy:xy:00:02",
+                "IPv4Address": "x.x.x.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {
+            "com.docker.compose.network": "default",
+            "com.docker.compose.project": "task-two-artifacts",
+            "com.docker.compose.version": "2.26.1"
+        }
+    }
+]
+
+==========================================================================
+
+$ docker inspect redis
+[
+    {
+        "Id": "sha256:8a4aaf84f31a637cb4e88b82f64d898448ed2e1eabbd8484eb202a492cc98c63",
+        "RepoTags": [
+            "redis:latest"
+        ],
+        "RepoDigests": [
+            "redis@sha256:8a4aaf84f31a637cb4e88b82f64d898448ed2e1eabbd8484eb202a492cc98c63"
+        ],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2024-04-05T21:53:10Z",
+        "ContainerConfig": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": null,
+            "Cmd": null,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": null
+        },
+        "DockerVersion": "26.0.0",
+        "Author": "",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "6379/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GOSU_VERSION=1.17",
+                "REDIS_VERSION=7.2.4",
+                "REDIS_DOWNLOAD_URL=http://download.redis.io/releases/redis-7.2.4.tar.gz",
+                "REDIS_DOWNLOAD_SHA=8d104c26a154b29fd67d6568b4f375212212ad41e0c2caa3d66480e78dbd3b59"
+            ],
+            "Cmd": [
+                "redis-server"
+            ],
+            "ArgsEscaped": true,
+            "Image": "",
+            "Volumes": {
+                "/data": {}
+            },
+            "WorkingDir": "/data",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": null
+        },
+        "Architecture": "arm64",
+        "Os": "linux",
+        "Size": 45467972,
+        "GraphDriver": {
+            "Data": null,
+            "Name": "overlayfs"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:6e5a1bc9659a34c2721239cd7ba5c8a14200f98c6e2c49531ba6559aa1c43f67",
+                "sha256:30f12c796004ac8c0be0afea9e522011593e9e952bb4113f26092b4e5b681ea7",
+                "sha256:05b479b9fd9c79e9d940fb226079a2e4f6f31796c78f0915d648ea597afc9a03",
+                "sha256:7162b7d0b6f06d412e4b40a420f18233dbc478eeaf62a396389f0fc8ee8f4276",
+                "sha256:58a6a4a0a4652d18bb1f0bcea424840862d8379ec3d34a2a401b6ae4d2953441",
+                "sha256:72bc94f4ab4294c239db6c5926739096fb654f12c4c240c294a554d7c1c31486",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:eb09a55d8b6006496808aef57c5a200f4e34a3a0aaadb71762cfdfbc852a3070"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2024-04-24T15:38:49.293448381Z"
+        },
+        "Container": ""
+    }
+]
+
+==========================================================================
+
+$ docker inspect hasura/graphql-engine
+[
+    {
+        "Id": "sha256:ac23694ba22f5b790c6f53257ef6c87c1b5fdf074094d013010a213c9fad2794",
+        "RepoTags": [
+            "hasura/graphql-engine:latest"
+        ],
+        "RepoDigests": [
+            "hasura/graphql-engine@sha256:ac23694ba22f5b790c6f53257ef6c87c1b5fdf074094d013010a213c9fad2794"
+        ],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2024-04-02T07:52:00.425148588Z",
+        "ContainerConfig": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": null,
+            "Cmd": null,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": null
+        },
+        "DockerVersion": "26.0.0",
+        "Author": "",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LANG=C.UTF-8",
+                "LC_ALL=C.UTF-8",
+                "HGE_BINARY=graphql-engine"
+            ],
+            "Cmd": [
+                "/bin/sh",
+                "-c",
+                "\"${HGE_BINARY}\" serve"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "curl -f http://localhost:8080/healthz || exit 1"
+                ],
+                "StartPeriod": 10000000000
+            },
+            "ArgsEscaped": true,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {
+                "org.opencontainers.image.ref.name": "ubuntu",
+                "org.opencontainers.image.version": "22.04"
+            }
+        },
+        "Architecture": "arm64",
+        "Variant": "v8",
+        "Os": "linux",
+        "Size": 154947905,
+        "GraphDriver": {
+            "Data": null,
+            "Name": "overlayfs"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:a510ae0f066c65d73f523d5821fe048a6858e53360ecb8d39b7b931162f11479",
+                "sha256:7e3fdff3e85155c180b22969dff5cc4b750090c3447a19ca10d45bdf03151572",
+                "sha256:53e38d960da22c3d097bba0fdc9bcfe3c2fbae49bc414113de45f90c1a1a7512",
+                "sha256:d94f0bb2e36f16ce189db5836dd071cf98f5cc19a11537dd0aa848948f7f51d3",
+                "sha256:43f777e272b414fea5c49ed149c8c2a076c4acc30d65e23cf5c592b3f3a0be5d",
+                "sha256:5f614d8e8bd595c532ee681cfd24b147de1a42f218d72f0f71d0be71e005c381",
+                "sha256:995b0ecc4b81740a684c15d22d6b8cf2b0900950e523c93885441c5914e5137a",
+                "sha256:49935c1322ae7d79db423cff48beeac872fce9b37302f204937146dfefd29b71"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2024-04-24T15:47:05.856461708Z"
+        },
+        "Container": ""
+    }
+]
+
+==========================================================================
+
+
+$ docker logs task-two-artifacts-postgres-1
+
+PostgreSQL Database directory appears to contain a database; Skipping initialization
+
+2024-04-24 17:19:08.186 UTC [1] LOG:  starting PostgreSQL 15.6 (Debian 15.6-1.pgdg120+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+2024-04-24 17:19:08.196 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2024-04-24 17:19:08.196 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2024-04-24 17:19:08.199 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2024-04-24 17:19:08.205 UTC [28] LOG:  database system was interrupted; last known up at 2024-04-24 17:16:15 UTC
+2024-04-24 17:19:08.222 UTC [29] FATAL:  the database system is starting up
+2024-04-24 17:19:08.311 UTC [28] LOG:  database system was not properly shut down; automatic recovery in progress
+2024-04-24 17:19:08.312 UTC [28] LOG:  redo starts at 0/15D7D50
+2024-04-24 17:19:08.312 UTC [28] LOG:  invalid record length at 0/15D7D88: wanted 24, got 0
+2024-04-24 17:19:08.312 UTC [28] LOG:  redo done at 0/15D7D50 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2024-04-24 17:19:08.314 UTC [26] LOG:  checkpoint starting: end-of-recovery immediate wait
+2024-04-24 17:19:08.320 UTC [26] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.007 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB
+2024-04-24 17:19:08.322 UTC [1] LOG:  database system is ready to accept connections
+
+==========================================================================
+
+
+$ docker logs task-two-artifacts-redis-1
+1:C 24 Apr 2024 17:19:08.217 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 24 Apr 2024 17:19:08.217 * Redis version=7.2.4, bits=64, commit=00000000, modified=0, pid=1, just started
+1:C 24 Apr 2024 17:19:08.217 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1:M 24 Apr 2024 17:19:08.218 * monotonic clock: POSIX clock_gettime
+1:M 24 Apr 2024 17:19:08.218 * Running mode=standalone, port=6379.
+1:M 24 Apr 2024 17:19:08.219 * Server initialized
+1:M 24 Apr 2024 17:19:08.219 * Ready to accept connections tcp
+
+
+
+$ docker logs task-two-artifacts-redis-1
+1:C 24 Apr 2024 17:19:08.217 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 24 Apr 2024 17:19:08.217 * Redis version=7.2.4, bits=64, commit=00000000, modified=0, pid=1, just started
+1:C 24 Apr 2024 17:19:08.217 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1:M 24 Apr 2024 17:19:08.218 * monotonic clock: POSIX clock_gettime
+1:M 24 Apr 2024 17:19:08.218 * Running mode=standalone, port=6379.
+1:M 24 Apr 2024 17:19:08.219 * Server initialized
+1:M 24 Apr 2024 17:19:08.219 * Ready to accept connections tcp
+
+==========================================================================
+
+
+$ docker logs task-two-artifacts-graphql-engine-1
+
+{"detail":{"message":{"host":"Unknown or invalid host","message":"Postgres connection failed","retry_attempt":0}},"level":"warn","timestamp":"2024-04-24T17:19:08.222+0000","type":"pg-client"}
+{"detail":{"info":{"admin_secret_set":true,"auth_hook":null,"auth_hook_mode":null,"console_assets_dir":null,"console_sentry_dsn":null,"cors_config":{"allowed_origins":"*","disabled":false,"ws_read_cookie":null},"enable_allowlist":false,"enable_console":true,"enable_maintenance_mode":false,"enable_metadata_query_logging":false,"enable_telemetry":true,"enabled_apis":["config","pgdump","metadata","graphql"],"enabled_log_types":["jwk-refresh-log","webhook-log","http-log","startup","websocket-log"],"events_fetch_batch_size":100,"experimental_features":[],"graceful_shutdown_timeout":60,"infer_function_permissions":true,"jwt_secret":[],"live_query_options":{"batch_size":100,"refetch_delay":1},"log_level":"info","port":8080,"remote_schema_permissions":false,"server_host":"HostAny","stringify_numeric_types":false,"transaction_isolation":"ISOLATION LEVEL READ COMMITTED","unauth_role":null,"use_prepared_statements":true,"v1-boolean-null-collapse":false,"websocket_compression_options":"NoCompression","websocket_connection_init_timeout":"Refined (Seconds {seconds = 3s})","websocket_keep_alive":"KeepAliveDelay {unKeepAliveDelay = Refined (Seconds {seconds = 5s})}"},"kind":"server_configuration"},"level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"startup"}
+{"detail":"Thread websocket connection reaper thread (re)started","level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"unstructured"}
+{"detail":"Thread runCronEventsGenerator (re)started","level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"unstructured"}
+{"detail":{"info":{"database_url":"postgres://postgres:...@postgres:5432/postgres","retries":1},"kind":"postgres_connection"},"level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"startup"}
+{"detail":{"info":"Already at the latest catalog version (48); nothing to do.","kind":"catalog_migrate"},"level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"startup"}
+{"detail":{"info":"Schema sync enabled. Polling at Refined (Milliseconds {milliseconds = 1s})","kind":"schema-sync"},"level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"startup"}
+{"detail":{"info":{"instance_id":"1aea46c7-6bcb-4d62-bb91-410726939278","message":"listener thread started","thread_id":"ThreadId 33"},"kind":"schema-sync"},"level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"startup"}
+{"detail":{"info":"EE client credentials not present in the metadata database. Hasura EE features are disabled.","kind":"license_info"},"level":"warn","timestamp":"2024-04-24T17:19:08.222+0000","type":"startup"}
+{"detail":{"info":{"objects":[{"definition":"default","name":"source default","reason":"Inconsistent object: environment variable 'HASURA_GRAPHQL_DATABASE_URL' not set","type":"source"}]},"message":"Inconsistent Metadata!"},"level":"warn","timestamp":"2024-04-24T17:19:08.222+0000","type":"metadata"}
+{"detail":{"info":{"instance_id":"1aea46c7-6bcb-4d62-bb91-410726939278","message":"processor thread started","thread_id":"ThreadId 45"},"kind":"schema-sync"},"level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"startup"}
+{"detail":{"info":"starting workers","kind":"event_triggers"},"level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"startup"}
+{"detail":{"info":"preparing data","kind":"scheduled_triggers"},"level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"startup"}
+{"detail":{"info":"Help us improve Hasura! The graphql-engine server collects anonymized usage stats which allows us to keep improving Hasura at warp speed. To read more or opt-out, visit https://hasura.io/docs/latest/graphql/core/guides/telemetry.html","kind":"telemetry"},"level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"startup"}
+{"detail":{"info":{"message":"starting API server","time_taken":0.182072666},"kind":"server"},"level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"startup"}
+{"detail":"Thread SchemeUpdate.listener (re)started","level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"unstructured"}
+{"detail":"Thread ourIdleGC (re)started","level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"unstructured"}
+{"detail":"Thread SchemeUpdate.processor (re)started","level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"unstructured"}
+{"detail":{"info":{"objects":[{"definition":"default","name":"source default","reason":"Inconsistent object: environment variable 'HASURA_GRAPHQL_DATABASE_URL' not set","type":"source"}]},"message":"Inconsistent Metadata!"},"level":"warn","timestamp":"2024-04-24T17:19:08.222+0000","type":"metadata"}
+{"detail":"Thread runTelemetry (re)started","level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"unstructured"}
+{"detail":"Thread asyncActionsProcessor (re)started","level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"unstructured"}
+{"detail":"Thread processScheduledTriggers (re)started","level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"unstructured"}
+{"detail":"Thread update JWK (re)started","level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"unstructured"}
+{"detail":"Thread processEventQueue (re)started","level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"unstructured"}
+{"detail":"Thread checkForUpdates (re)started","level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"unstructured"}
+{"detail":{"http_error":{"http_exception":null,"response":"{\"error\":\"invalid_payload\"}","status_code":400,"url":"https://telemetry.hasura.io/v1/http"},"message":"failed to post telemetry","type":"http_error"},"level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"telemetry-log"}
+{"detail":"Thread asyncActionSubscriptionsProcessor (re)started","level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"unstructured"}
+{"detail":"Thread sourcePingPoller (re)started","level":"info","timestamp":"2024-04-24T17:19:08.222+0000","type":"unstructured"}
+{"detail":{"http_info":{"content_encoding":null,"http_version":"HTTP/1.1","ip":"127.0.0.1","method":"GET","status":200,"url":"/healthz"},"operation":{"query":{"type":null},"request_id":"1acac3a2-0bb9-425c-bb32-b72cc583999b","request_mode":"non-graphql","response_size":36,"uncompressed_response_size":36},"request_id":"1acac3a2-0bb9-425c-bb32-b72cc583999b"},"level":"info","timestamp":"2024-04-24T17:19:37.289+0000","type":"http-log"}
+{"detail":{"http_info":{"content_encoding":null,"http_version":"HTTP/1.1","ip":"127.0.0.1","method":"GET","status":200,"url":"/healthz"},"operation":{"query":{"type":null},"request_id":"6c7395f8-a4e2-43eb-9b87-110edc76ce04","request_mode":"non-graphql","response_size":36,"uncompressed_response_size":36},"request_id":"6c7395f8-a4e2-43eb-9b87-110edc76ce04"},"level":"info","timestamp":"2024-04-24T17:20:07.415+0000","type":"http-log"}
+{"detail":{"http_info":{"content_encoding":null,"http_version":"HTTP/1.1","ip":"127.0.0.1","method":"GET","status":200,"url":"/healthz"},"operation":{"query":{"type":null},"request_id":"54de3f59-d8af-4dae-a415-9a76a32100b5","request_mode":"non-graphql","response_size":36,"uncompressed_response_size":36},"request_id":"54de3f59-d8af-4dae-a415-9a76a32100b5"},"level":"info","timestamp":"2024-04-24T17:20:37.526+0000","type":"http-log"}
+{"detail":{"http_info":{"content_encoding":null,"http_version":"HTTP/1.1","ip":"127.0.0.1","method":"GET","status":200,"url":"/healthz"},"operation":{"query":{"type":null},"request_id":"3e415474-effc-4f2d-8538-6607b24d0e31","request_mode":"non-graphql","response_size":36,"uncompressed_response_size":36},"request_id":"3e415474-effc-4f2d-8538-6607b24d0e31"},"level":"info","timestamp":"2024-04-24T17:21:07.671+0000","type":"http-log"}
+{"detail":{"http_info":{"content_encoding":null,"http_version":"HTTP/1.1","ip":"127.0.0.1","method":"GET","status":200,"url":"/healthz"},"operation":{"query":{"type":null},"request_id":"8a8c791b-cbee-47bb-b92e-28c12cacff2e","request_mode":"non-graphql","response_size":36,"uncompressed_response_size":36},"request_id":"8a8c791b-cbee-47bb-b92e-28c12cacff2e"},"level":"info","timestamp":"2024-04-24T17:21:37.814+0000","type":"http-log"}
+{"detail":{"http_info":{"content_encoding":null,"http_version":"HTTP/1.1","ip":"127.0.0.1","method":"GET","status":200,"url":"/healthz"},"operation":{"query":{"type":null},"request_id":"04092bfa-0952-4ca0-9e48-4b2e02c40776","request_mode":"non-graphql","response_size":36,"uncompressed_response_size":36},"request_id":"04092bfa-0952-4ca0-9e48-4b2e02c40776"},"level":"info","timestamp":"2024-04-24T17:22:07.926+0000","type":"http-log"}
+{"detail":{"http_info":{"content_encoding":null,"http_version":"HTTP/1.1","ip":"127.0.0.1","method":"GET","status":200,"url":"/healthz"},"operation":{"query":{"type":null},"request_id":"0682a2b9-b46f-451b-a60e-1d05eba94f6e","request_mode":"non-graphql","response_size":36,"uncompressed_response_size":36},"request_id":"0682a2b9-b46f-451b-a60e-1d05eba94f6e"},"level":"info","timestamp":"2024-04-24T17:22:38.028+0000","type":"http-log"}
+{"detail":{"http_info":{"content_encoding":null,"http_version":"HTTP/1.1","ip":"127.0.0.1","method":"GET","status":200,"url":"/healthz"},"operation":{"query":{"type":null},"request_id":"a43bd20c-14c8-49e4-be04-90887ad5e9d6","request_mode":"non-graphql","response_size":36,"uncompressed_response_size":36},"request_id":"a43bd20c-14c8-49e4-be04-90887ad5e9d6"},"level":"info","timestamp":"2024-04-24T17:23:08.146+0000","type":"http-log"}
+{"detail":{"http_info":{"content_encoding":null,"http_version":"HTTP/1.1","ip":"127.0.0.1","method":"GET","status":200,"url":"/healthz"},"operation":{"query":{"type":null},"request_id":"854a50e1-e67f-4216-9bb5-8c0b55c3a7de","request_mode":"non-graphql","response_size":36,"uncompressed_response_size":36},"request_id":"854a50e1-e67f-4216-9bb5-8c0b55c3a7de"},"level":"info","timestamp":"2024-04-24T17:23:38.247+0000","type":"http-log"}
+{"detail":{"http_info":{"content_encoding":null,"http_version":"HTTP/1.1","ip":"127.0.0.1","method":"GET","status":200,"url":"/healthz"},"operation":{"query":{"type":null},"request_id":"e416bb5d-0c38-4823-8d0c-b91b5615271c","request_mode":"non-graphql","response_size":36,"uncompressed_response_size":36},"request_id":"e416bb5d-0c38-4823-8d0c-b91b5615271c"},"level":"info","timestamp":"2024-04-24T17:24:08.360+0000","type":"http-log"}
+{"detail":{"http_info":{"content_encoding":null,"http_version":"HTTP/1.1","ip":"127.0.0.1","method":"GET","status":200,"url":"/healthz"},"operation":{"query":{"type":null},"request_id":"57ec7003-bd8c-47ac-8c5b-899fea31d915","request_mode":"non-graphql","response_size":36,"uncompressed_response_size":36},"request_id":"57ec7003-bd8c-47ac-8c5b-899fea31d915"},"level":"info","timestamp":"2024-04-24T17:24:38.428+0000","type":"http-log"}
+{"detail":{"http_info":{"content_encoding":null,"http_version":"HTTP/1.1","ip":"127.0.0.1","method":"GET","status":200,"url":"/healthz"},"operation":{"query":{"type":null},"request_id":"116fffc8-30b8-4a9a-93c1-a568a60225ca","request_mode":"non-graphql","response_size":36,"uncompressed_response_size":36},"request_id":"116fffc8-30b8-4a9a-93c1-a568a60225ca"},"level":"info","timestamp":"2024-04-24T17:25:08.521+0000","type":"http-log"}

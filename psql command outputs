@@ -1,0 +1,179 @@
+thorough-herring-67_db_8114218=> \d
+               List of relations
+ Schema |     Name      | Type  |    Owner     
+--------+---------------+-------+--------------
+ public | Album         | table | neondb_owner
+ public | Artist        | table | neondb_owner
+ public | Customer      | table | neondb_owner
+ public | Employee      | table | neondb_owner
+ public | Genre         | table | neondb_owner
+ public | Invoice       | table | neondb_owner
+ public | InvoiceLine   | table | neondb_owner
+ public | MediaType     | table | neondb_owner
+ public | Playlist      | table | neondb_owner
+ public | PlaylistTrack | table | neondb_owner
+ public | Track         | table | neondb_owner
+(11 rows)
+
+
+
+thorough-herring-67_db_8114218=> \da
+                     List of aggregate functions
+ Schema | Name | Result data type | Argument data types | Description 
+--------+------+------------------+---------------------+-------------
+(0 rows)
+
+
+
+thorough-herring-67_db_8114218=> \db
+         List of tablespaces
+    Name    |    Owner    | Location 
+------------+-------------+----------
+ pg_default | cloud_admin | 
+ pg_global  | cloud_admin | 
+(2 rows)
+
+
+
+thorough-herring-67_db_8114218=> \dc
+               List of conversions
+ Schema | Name | Source | Destination | Default? 
+--------+------+--------+-------------+----------
+(0 rows)
+
+
+
+thorough-herring-67_db_8114218=> \dd
+         Object descriptions
+ Schema | Name | Object | Description 
+--------+------+--------+-------------
+(0 rows)
+
+
+
+thorough-herring-67_db_8114218=> \df
+                       List of functions
+ Schema | Name | Result data type | Argument data types | Type 
+--------+------+------------------+---------------------+------
+(0 rows)
+
+
+
+thorough-herring-67_db_8114218=> \dd
+         Object descriptions
+ Schema | Name | Object | Description 
+--------+------+--------+-------------
+(0 rows)
+
+
+
+thorough-herring-67_db_8114218=> \dg
+                                                          List of roles
+   Role name    |                          Attributes                           |                    Member of                    
+----------------+---------------------------------------------------------------+-------------------------------------------------
+ cloud_admin    | Superuser, Create role, Create DB, Replication, Bypass RLS    | {}
+ neon_superuser | Create role, Create DB, Cannot login, Replication, Bypass RLS | {pg_read_all_data,pg_write_all_data,pg_monitor}
+ neondb_owner   | Create role, Create DB, Replication, Bypass RLS               | {neon_superuser}
+
+
+
+
+thorough-herring-67_db_8114218=> \di
+                            List of relations
+ Schema |           Name           | Type  |    Owner     |     Table     
+--------+--------------------------+-------+--------------+---------------
+ public | IFK_AlbumArtistId        | index | neondb_owner | Album
+ public | IFK_CustomerSupportRepId | index | neondb_owner | Customer
+ public | IFK_EmployeeReportsTo    | index | neondb_owner | Employee
+ public | IFK_InvoiceCustomerId    | index | neondb_owner | Invoice
+ public | IFK_InvoiceLineInvoiceId | index | neondb_owner | InvoiceLine
+ public | IFK_InvoiceLineTrackId   | index | neondb_owner | InvoiceLine
+ public | IFK_PlaylistTrackTrackId | index | neondb_owner | PlaylistTrack
+ public | IFK_TrackAlbumId         | index | neondb_owner | Track
+ public | IFK_TrackGenreId         | index | neondb_owner | Track
+ public | IFK_TrackMediaTypeId     | index | neondb_owner | Track
+ public | PK_Album                 | index | neondb_owner | Album
+ public | PK_Artist                | index | neondb_owner | Artist
+ public | PK_Customer              | index | neondb_owner | Customer
+ public | PK_Employee              | index | neondb_owner | Employee
+ public | PK_Genre                 | index | neondb_owner | Genre
+ public | PK_Invoice               | index | neondb_owner | Invoice
+ public | PK_InvoiceLine           | index | neondb_owner | InvoiceLine
+ public | PK_MediaType             | index | neondb_owner | MediaType
+ public | PK_Playlist              | index | neondb_owner | Playlist
+ public | PK_PlaylistTrack         | index | neondb_owner | PlaylistTrack
+ public | PK_Track                 | index | neondb_owner | Track
+(21 rows)
+
+
+
+
+thorough-herring-67_db_8114218=> \dl
+      Large objects
+ ID | Owner | Description 
+----+-------+-------------
+(0 rows)
+
+
+
+thorough-herring-67_db_8114218=> \dn
+      List of schemas
+  Name  |       Owner       
+--------+-------------------
+ public | pg_database_owner
+(1 row)
+
+
+
+thorough-herring-67_db_8114218=> \do
+                             List of operators
+ Schema | Name | Left arg type | Right arg type | Result type | Description 
+--------+------+---------------+----------------+-------------+-------------
+(0 rows)
+
+
+
+
+thorough-herring-67_db_8114218=> \dt
+               List of relations
+ Schema |     Name      | Type  |    Owner     
+--------+---------------+-------+--------------
+ public | Album         | table | neondb_owner
+ public | Artist        | table | neondb_owner
+ public | Customer      | table | neondb_owner
+ public | Employee      | table | neondb_owner
+ public | Genre         | table | neondb_owner
+ public | Invoice       | table | neondb_owner
+ public | InvoiceLine   | table | neondb_owner
+ public | MediaType     | table | neondb_owner
+ public | Playlist      | table | neondb_owner
+ public | PlaylistTrack | table | neondb_owner
+ public | Track         | table | neondb_owner
+(11 rows)
+
+
+thorough-herring-67_db_8114218=> \du
+                                                          List of roles
+   Role name    |                          Attributes                           |                    Member of                    
+----------------+---------------------------------------------------------------+-------------------------------------------------
+ cloud_admin    | Superuser, Create role, Create DB, Replication, Bypass RLS    | {}
+ neon_superuser | Create role, Create DB, Cannot login, Replication, Bypass RLS | {pg_read_all_data,pg_write_all_data,pg_monitor}
+ neondb_owner   | Create role, Create DB, Replication, Bypass RLS               | {neon_superuser}
+
+
+
+thorough-herring-67_db_8114218=> \dx
+                 List of installed extensions
+  Name   | Version |   Schema   |         Description          
+---------+---------+------------+------------------------------
+ plpgsql | 1.0     | pg_catalog | PL/pgSQL procedural language
+(1 row)
+
+
+
+thorough-herring-67_db_8114218=> \dy
+              List of event triggers
+ Name | Event | Owner | Enabled | Function | Tags 
+------+-------+-------+---------+----------+------
+(0 rows)
+
